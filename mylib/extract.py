@@ -3,9 +3,6 @@ from dotenv import load_dotenv
 import os
 import json
 import base64
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, split, when, monotonically_increasing_id
-from pyspark.sql.types import IntegerType
 
 # Load environment variables
 load_dotenv()

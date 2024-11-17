@@ -3,7 +3,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when
+
 import json
 import base64
 
@@ -17,7 +17,8 @@ url = "https://"+server_h+"/api/2.0"
 dbfs_path = FILESTORE_PATH + "/biopics.csv"  # The target path in DBFS
 
 # Use the token in the Spark session
-spark = SparkSession.builder.appName("Spark App").config("spark.jars.packages", "io.delta:delta-core_2.12:1.2.1").getOrCreate()
+spark = SparkSession.builder.appName("Spark App").config("spark.jars.packages", 
+                                                         "io.delta:delta-core_2.12:1.2.1").getOrCreate()
 
 # Transform and clean the data using Spark
 def transform_data(file_path):
@@ -80,7 +81,8 @@ def loadDataToDelta(file_path, delta_table_path):
 
 # Define paths
 file_location = "data/biopics.csv"
-delta_table_path = "dbfs:/FileStore/nmc58_mini_project11/nmc58_mini_project11_delta_table"
+delta_table_path = ("dbfs:/FileStore/nmc58_mini_project11/"
+                    "nmc58_mini_project11_delta_table")
 dbfs_file_path = "dbfs:/FileStore/nmc58_mini_project11/biopics.csv"
 
 loadDataToDBFS(file_location, dbfs_path, headers)

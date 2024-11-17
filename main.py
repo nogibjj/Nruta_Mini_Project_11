@@ -21,8 +21,9 @@ def main_workflow():
     print("Loading data into Spark DataFrame...")
     transform_data("dbfs:/FileStore/nmc58_mini_project11/biopics.csv")
 
-    file_location = "data/biopics.csv"
-    delta_table_path = "dbfs:/FileStore/nmc58_mini_project11/nmc58_mini_project11_delta_table"
+    
+    delta_table_path = ("dbfs:/FileStore/nmc58_mini_project11/"
+                        "nmc58_mini_project11_delta_table")
     dbfs_file_path = "dbfs:/FileStore/nmc58_mini_project11/biopics.csv"
 
 
