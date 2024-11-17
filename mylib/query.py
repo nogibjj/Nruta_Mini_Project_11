@@ -12,8 +12,8 @@ def logQuery(query):
         file.write(f"```sql\n{query}\n```\n\n")
 
 # Register the Delta table as a temporary view
-delta_table_path = "dbfs:/FileStore/nmc58_mini_project11/"
-                   "nmc58_mini_project11_delta_table"
+delta_table_path = ("dbfs:/FileStore/nmc58_mini_project11/"
+                   "nmc58_mini_project11_delta_table")
 spark.read.format("delta").load(delta_table_path).createOrReplaceTempView("nmc58_mini_project11_delta_table")
 
 # Now you can run SQL queries on the registered table

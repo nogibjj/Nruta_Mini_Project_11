@@ -59,7 +59,8 @@ def loadDataToDBFS(pathLocal, pathDBFS, headers):
     # Upload content in chunks
     for i in range(0, len(content), 2**20):
         chunk = base64.standard_b64encode(content[i:i+2**20]).decode()
-        perform_query('/dbfs/add-block', headers, data={'handle': handle, 'data': chunk})
+        perform_query('/dbfs/add-block', headers, 
+                      data={'handle': handle, 'data': chunk})
 
     # Close the file handle
     perform_query('/dbfs/close', headers, data={'handle': handle})
