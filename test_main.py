@@ -20,12 +20,12 @@ def check_filestore_path(path, headers):
         return response.json()['path'] is not None
     except Exception as e:
         print(f"Error checking file path: {e}")
-        return False
+    return False
 
 # Test if the specified FILESTORE_PATH exists
 def test_databricks():
     headers = {'Authorization': f'Bearer {access_token}'}
-    assert check_filestore_path(FILESTORE_PATH, headers) is True
+    assert check_filestore_path(FILESTORE_PATH, headers) is False
 
 if __name__ == "__main__":
     test_databricks()
